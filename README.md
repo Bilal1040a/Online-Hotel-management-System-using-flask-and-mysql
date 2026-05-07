@@ -18,9 +18,13 @@ To manage staff and room services in a centralized system
 The system is built with a modular structure using Flask routes and MySQL database integration. It follows a clean MVC-like architecture where:
 
 Frontend: HTML templates (Jinja2)
+
 Backend: Flask (Python)
+
 Database: MySQL
+
 Logic Layer: Python functions for handling queries and operations
+
 # 🔑 Core Functionalities
 🛏️ Room Management
 Display all rooms with status (Available / Booked)
