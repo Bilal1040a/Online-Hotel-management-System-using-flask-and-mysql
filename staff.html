@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Staff{% endblock %}
+{% block content %}
+<div class="section-header">
+  <div class="page-title">👤 Hotel Staff</div>
+  <a href="/staff/add" class="btn btn-success">➕ Add Staff</a>
+</div>
+<div class="card">
+  {% if staff %}
+  <table>
+    <thead>
+      <tr><th>#</th><th>Name</th><th>Position</th><th>Email</th></tr>
+    </thead>
+    <tbody>
+      {% for s in staff %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><strong>{{ s.name }}</strong></td>
+        <td><span class="badge badge-warning">{{ s.position }}</span></td>
+        <td>{{ s.email or '—' }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="empty-state"><div class="icon">👤</div><p>No staff members found.</p></div>
+  {% endif %}
+</div>
+{% endblock %}

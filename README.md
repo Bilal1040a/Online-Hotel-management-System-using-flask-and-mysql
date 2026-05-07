@@ -1,100 +1,113 @@
-# Online-Hotel-management-System-using-flask-and-mysql
-# 📌 Project Description
+# 🏨 Hotel Booking System — Python + MySQL + Flask
 
-This Hotel Booking System is a full-stack web application developed using Flask (Python) and MySQL to automate and manage core hotel operations efficiently. The system is designed to handle real-world hotel workflows such as room booking, customer management, check-in/check-out, staff records, payments, and service tracking.
+A web-based Hotel Booking System running on localhost.
+Converted from your Java Swing project into a full web app.
 
-The application provides a centralized platform where hotel administrators can easily monitor room availability, manage customer reservations, track revenue, and maintain staff information. It reduces manual effort and improves operational efficiency through a structured database-driven approach.
+---
 
-# 🏨 Key Objectives
-To automate hotel booking and management processes
+## 📦 SETUP INSTRUCTIONS
 
-To efficiently manage room allocation and availability
+### Step 1 — Install Python packages
+```
+pip install flask mysql-connector-python
+```
 
-To maintain customer records and booking history
+### Step 2 — Setup MySQL Database
+Open MySQL Workbench or terminal and run:
+```
+mysql -u root -p < hotel_db.sql
+```
+OR copy-paste the contents of `hotel_db.sql` into MySQL Workbench and execute.
 
-To handle check-in and check-out operations smoothly
+### Step 3 — Configure DB credentials in app.py
+Edit lines 11-14 in app.py:
+```python
+DB_CONFIG = {
+    "host": "localhost",
+    "user": "root",       ← your MySQL username
+    "password": "",       ← your MySQL password
+    "database": "hotel_db"
+}
+```
 
-To track payments and generate revenue reports
+### Step 4 — Run the app
+```
+python app.py
+```
 
-To manage staff and room services in a centralized system
+### Step 5 — Open in browser
+```
+http://localhost:5000
+```
 
-# ⚙️ System Overview
-The system is built with a modular structure using Flask routes and MySQL database integration. It follows a clean MVC-like architecture where:
+---
 
-Frontend: HTML templates (Jinja2)
-Backend: Flask (Python)
-Database: MySQL
-Logic Layer: Python functions for handling queries and operations
+## 🗂 PROJECT STRUCTURE
 
-# 🔑 Core Functionalities
-🛏️ Room Management
+```
+hotel_booking/
+├── app.py                  ← Main Flask application
+├── hotel_db.sql            ← MySQL database schema + queries
+├── requirements.txt        ← Python dependencies
+├── README.md               ← This file
+└── templates/
+    ├── base.html           ← Shared layout with navbar
+    ├── index.html          ← Dashboard / home
+    ├── rooms.html          ← All rooms / available rooms
+    ├── customers.html      ← Current guests
+    ├── book.html           ← Book a room form
+    ├── checkout.html       ← Checkout form
+    ├── staff.html          ← Staff list
+    ├── add_staff.html      ← Add staff form
+    ├── services.html       ← Room services list
+    ├── add_service.html    ← Add service form
+    ├── payments.html       ← Payment records
+    └── report.html         ← Daily report dashboard
+```
 
-Display all rooms with status (Available / Booked).
+---
 
-Automatically assign available rooms during booking.
+## 🌐 PAGES / ROUTES
 
-Track room types and occupancy status.
+| URL                | Description             |
+|--------------------|-------------------------|
+| /                  | Dashboard with stats    |
+| /rooms             | All rooms               |
+| /rooms/available   | Available rooms only    |
+| /customers         | Current checked-in guests |
+| /book              | Book a new room         |
+| /checkout          | Checkout a guest        |
+| /staff             | Hotel staff list        |
+| /staff/add         | Add new staff member    |
+| /services          | Room services           |
+| /services/add      | Add room service        |
+| /payments          | Payment records         |
+| /report            | Daily summary report    |
 
-👤 Customer Management
+---
 
-Store customer details (name, CNIC, location, payment method)
+## 📋 DATABASE TABLES
 
-Manage booking history
+| Table         | Description                     |
+|---------------|---------------------------------|
+| rooms         | 10 hotel rooms (Standard/Deluxe/Suite) |
+| customers     | Currently checked-in guests      |
+| payments      | Payment transaction records      |
+| staff         | Hotel staff members              |
+| room_services | Services linked to rooms         |
 
-Handle check-in and check-out processes
+---
 
-💳 Payment System
+## 🔑 OOP CONCEPTS PRESERVED FROM JAVA PROJECT
 
-Record payments during checkout
-
-Calculate total revenue
-
-Maintain payment history with customer linkage
-
-👨‍💼 Staff Management
-
-Add new staff members
-
-View and manage staff records
-
-🧾 Room Services
-
-Assign additional services to rooms
-
-Track service types and costs
-
-📊 Reports Dashboard
-
-Total rooms, available rooms, and booked rooms
-
-Total customers and staff
-
-Daily and total revenue reports
-
-Recent booking summaries
-
-# 🧠 Technical Highlights
-
-Built using Flask framework for backend routing
-
-Uses MySQL database for persistent data storage
-
-Implements CRUD operations for all modules
-
-Uses Flash messages for user feedback
-
-Modular code structure with reusable query helper function
-
-Secure database connection handling
-
-# 🚀 Project Impact
-
-This system demonstrates how a real-world hotel management solution can be implemented using web technologies. It improves efficiency by reducing manual paperwork, enhancing data accuracy, and providing real-time hotel operational insights.
-
-# 🎯 Future Enhancements
-User authentication (Admin / Staff login system)
-Online room reservation portal
-Payment gateway integration
-Email/SMS notifications for bookings
-Responsive UI with Bootstrap or React frontend
-Role-based access control
+| Java Concept     | Python/Flask Equivalent           |
+|------------------|-----------------------------------|
+| Person (base class) | DB table design + shared query logic |
+| Customer extends Person | customers table with all fields  |
+| Staff extends Person | staff table                    |
+| Room class       | rooms table                       |
+| Hotel class      | app.py route handlers             |
+| Encapsulation    | DB columns + access via routes    |
+| Inheritance      | Table structure + shared templates |
+| ArrayList        | SQL queries returning lists       |
+| GUI (Swing)      | HTML templates + Flask routes     |

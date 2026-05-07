@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Add Service{% endblock %}
+{% block content %}
+<div class="page-title">🛎 Add Room Service</div>
+<div class="card" style="max-width:520px;margin:0 auto;">
+  <form method="POST" action="/services/add">
+    <div class="form-group">
+      <label>🛏 Room</label>
+      <select name="room_id" required>
+        <option value="">Select room...</option>
+        {% for r in rooms %}
+        <option value="{{ r.room_id }}">{{ r.room_id }} — {{ r.type }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group">
+      <label>🛎 Service Type</label>
+      <select name="service_type" required>
+        <option value="">Select service...</option>
+        <option value="Room Cleaning">Room Cleaning</option>
+        <option value="Laundry">Laundry</option>
+        <option value="Room Service">Room Service</option>
+        <option value="WiFi">WiFi</option>
+        <option value="Mini Bar">Mini Bar</option>
+        <option value="Breakfast">Breakfast</option>
+        <option value="Airport Transfer">Airport Transfer</option>
+        <option value="Spa">Spa</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>💰 Service Cost (PKR)</label>
+      <input type="number" name="cost" placeholder="0.00" step="0.01" min="0" required/>
+    </div>
+    <button type="submit" class="btn btn-success" style="width:100%;padding:13px;">✅ Add Service</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Room Services{% endblock %}
+{% block content %}
+<div class="section-header">
+  <div class="page-title">🛎 Room Services</div>
+  <a href="/services/add" class="btn btn-success">➕ Add Service</a>
+</div>
+<div class="card">
+  {% if services %}
+  <table>
+    <thead>
+      <tr><th>#</th><th>Room</th><th>Room Type</th><th>Service</th><th>Cost (PKR)</th></tr>
+    </thead>
+    <tbody>
+      {% for s in services %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><strong>{{ s.room_id }}</strong></td>
+        <td>{{ s.room_type }}</td>
+        <td>{{ s.service_type }}</td>
+        <td>PKR {{ "{:,.0f}".format(s.service_cost) }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="empty-state"><div class="icon">🛎</div><p>No services recorded yet.</p></div>
+  {% endif %}
+</div>
+{% endblock %}

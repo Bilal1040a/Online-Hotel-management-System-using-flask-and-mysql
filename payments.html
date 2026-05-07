@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Payments{% endblock %}
+{% block content %}
+<div class="page-title">💳 Payment Records</div>
+<div class="card" style="background:#d5f5e3;margin-bottom:20px;display:flex;align-items:center;gap:16px;">
+  <div style="font-size:2rem;">💰</div>
+  <div>
+    <div style="font-size:1.6rem;font-weight:700;color:#1a8045;">PKR {{ "{:,.0f}".format(total) }}</div>
+    <div style="color:#555;font-size:.9rem;">Total Revenue Collected</div>
+  </div>
+</div>
+<div class="card">
+  {% if payments %}
+  <table>
+    <thead>
+      <tr><th>#</th><th>Customer</th><th>Room</th><th>Amount (PKR)</th><th>Date</th></tr>
+    </thead>
+    <tbody>
+      {% for p in payments %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ p.customer_name or 'Checked Out' }}</td>
+        <td>{{ p.room_id or '—' }}</td>
+        <td><strong>PKR {{ "{:,.0f}".format(p.amount) }}</strong></td>
+        <td>{{ p.payment_date }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="empty-state"><div class="icon">💳</div><p>No payment records yet.</p></div>
+  {% endif %}
+</div>
+{% endblock %}

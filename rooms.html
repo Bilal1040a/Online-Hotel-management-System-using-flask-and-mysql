@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Rooms{% endblock %}
+{% block content %}
+
+<div class="section-header">
+  <div class="page-title">🛏 {{ filter_label if filter_label else "All Rooms" }}</div>
+  <div style="display:flex;gap:10px;">
+    <a href="/rooms" class="btn btn-primary btn-sm">All Rooms</a>
+    <a href="/rooms/available" class="btn btn-success btn-sm">Available Only</a>
+  </div>
+</div>
+
+<div class="card">
+  {% if rooms %}
+  <table>
+    <thead>
+      <tr>
+        <th>Room ID</th>
+        <th>Type</th>
+        <th>Price / Night</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in rooms %}
+      <tr>
+        <td><strong>{{ r.room_id }}</strong></td>
+        <td>{{ r.type }}</td>
+        <td>PKR {{ "{:,.0f}".format(r.price) }}</td>
+        <td>
+          {% if r.availability == 'Available' %}
+            <span class="badge badge-success">✅ Available</span>
+          {% else %}
+            <span class="badge badge-danger">🔴 Booked</span>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="empty-state">
+    <div class="icon">🛏</div>
+    <p>No rooms found.</p>
+  </div>
+  {% endif %}
+</div>
+
+{% endblock %}

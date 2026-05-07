@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Current Guests{% endblock %}
+{% block content %}
+
+<div class="section-header">
+  <div class="page-title">👥 Current Guests</div>
+  <a href="/book" class="btn btn-primary">➕ Book New Room</a>
+</div>
+
+<div class="card">
+  {% if customers %}
+  <table>
+    <thead>
+      <tr>
+        <th>#</th><th>Name</th><th>CNIC</th><th>Location</th>
+        <th>Payment Method</th><th>Room</th><th>Room Type</th>
+        <th>Check In</th><th>Check Out</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for c in customers %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><strong>{{ c.name }}</strong></td>
+        <td>{{ c.cnic }}</td>
+        <td>{{ c.location }}</td>
+        <td><span class="badge badge-warning">{{ c.payment_method }}</span></td>
+        <td><strong>{{ c.room_id }}</strong></td>
+        <td>{{ c.room_type }}</td>
+        <td>{{ c.check_in }}</td>
+        <td>{{ c.check_out }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="empty-state">
+    <div class="icon">👥</div>
+    <p>No guests currently checked in.</p>
+    <a href="/book" class="btn btn-primary" style="margin-top:14px;">Book a Room</a>
+  </div>
+  {% endif %}
+</div>
+
+{% endblock %}
