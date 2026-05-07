@@ -30,13 +30,17 @@ Logic Layer: Python functions for handling queries and operations
 🛏️ Room Management
 
 Display all rooms with status (Available / Booked).
+
 Automatically assign available rooms during booking.
+
 Track room types and occupancy status.
 
 👤 Customer Management
 
 Store customer details (name, CNIC, location, payment method)
+
 Manage booking history
+
 Handle check-in and check-out processes
 
 💳 Payment System
