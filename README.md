@@ -7,10 +7,15 @@ The application provides a centralized platform where hotel administrators can e
 
 # 🏨 Key Objectives
 To automate hotel booking and management processes
+
 To efficiently manage room allocation and availability
+
 To maintain customer records and booking history
+
 To handle check-in and check-out operations smoothly
+
 To track payments and generate revenue reports
+
 To manage staff and room services in a centralized system
 
 # ⚙️ System Overview
@@ -23,35 +28,65 @@ Logic Layer: Python functions for handling queries and operations
 
 # 🔑 Core Functionalities
 🛏️ Room Management
-Display all rooms with status (Available / Booked)
-Automatically assign available rooms during booking
-Track room types and occupancy status
+
+Display all rooms with status (Available / Booked).
+
+Automatically assign available rooms during booking.
+
+Track room types and occupancy status.
+
 👤 Customer Management
+
 Store customer details (name, CNIC, location, payment method)
+
 Manage booking history
+
 Handle check-in and check-out processes
+
 💳 Payment System
+
 Record payments during checkout
+
 Calculate total revenue
+
 Maintain payment history with customer linkage
+
 👨‍💼 Staff Management
+
 Add new staff members
+
 View and manage staff records
+
 🧾 Room Services
+
 Assign additional services to rooms
+
 Track service types and costs
+
 📊 Reports Dashboard
+
 Total rooms, available rooms, and booked rooms
+
 Total customers and staff
+
 Daily and total revenue reports
+
 Recent booking summaries
+
 # 🧠 Technical Highlights
+
 Built using Flask framework for backend routing
+
 Uses MySQL database for persistent data storage
+
 Implements CRUD operations for all modules
+
 Uses Flash messages for user feedback
+
 Modular code structure with reusable query helper function
+
 Secure database connection handling
+
 # 🚀 Project Impact
 
 This system demonstrates how a real-world hotel management solution can be implemented using web technologies. It improves efficiency by reducing manual paperwork, enhancing data accuracy, and providing real-time hotel operational insights.
